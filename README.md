@@ -1,11 +1,13 @@
 
 <h2># zipcode-search</h2>
 
-<h3>Find your local weather🌞 and news📰 with one click!</h3>
+<h4>Find your local weather🌞 and news📰 with one click!</h4>
 
-<h3>Just add your US zipcode🔢 and hit enter.</h3>
+<h4>Just add your US zipcode🔢 and hit enter.</h4>
 
-<h3>Enjoy beautiful gradient background that changes color based on current time.</h3>
+<h4>Enjoy beautiful gradient background that changes color based on current time.</h4>
+
+<h4>This project is based on React, using zipcode, weather, and news APIs.</h4>
 
 ![image](https://user-images.githubusercontent.com/86023470/197096386-0df6c677-7a78-4601-9d64-369896d786cb.png)<br>
 
