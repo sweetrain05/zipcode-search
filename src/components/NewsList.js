@@ -1,94 +1,73 @@
-import { React, useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import NewsCard from "./NewsCard";
 
 // component with news listed
-function NewsList(props) {
-  return (
-    <>
-      {props.news !== null
-        ? props.news.map((article, i) => {
-            // get article published date
-            let publishedDay = props.news[i].datePublished.split("T")[0];
-            let publishedYear = publishedDay.split("-")[0];
-            let publishedDate = publishedDay.split("-")[2];
-            let publishedMonth = publishedDay.split("-")[1];
-            switch (Number(publishedMonth)) {
-              case 1:
-                publishedMonth = "Jan";
-                break;
-              case 2:
-                publishedMonth = "Feb";
-                break;
-              case 3:
-                publishedMonth = "Mar";
-                break;
-              case 4:
-                publishedMonth = "Apr";
-                break;
-              case 5:
-                publishedMonth = "May";
-                break;
-              case 6:
-                publishedMonth = "Jun";
-                break;
-              case 7:
-                publishedMonth = "Jul";
-                break;
-              case 8:
-                publishedMonth = "Aug";
-                break;
-              case 9:
-                publishedMonth = "Sept";
-                break;
-              case 10:
-                publishedMonth = "Oct";
-                break;
-              case 11:
-                publishedMonth = "Nov";
-                break;
-              case 12:
-                publishedMonth = "Dec";
-                break;
-            }
+export default function NewsList({ isActive, city, page }) {
+    // state
+    const [keyword, setKeyword] = useState(city);
+    const [date, setDate] = useState("");
+    const [news, setNews] = useState([]);
 
-            // remove any html tag from original snippet text
-            let snippetText = props.news[i].snippet.replace(
-              /<\/?[^>]+(>|$)/g,
-              ""
+    useEffect(() => {
+        if (isActive && city) {
+            setKeyword(city.toLowerCase());
+            getDateFromWeekAgo();
+        }
+    }, [isActive, city]);
+
+    // useEffect(() => {
+    //     if (isActive == true) {
+    //         //searchNews(city, state);
+    //     }
+    // }, [city]);
+
+    const getDateFromWeekAgo = () => {
+        const date = new Date();
+        date.setDate(date.getDate() - 7);
+        const year = date.getFullYear();
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        const formattedDate = `${year}-${month}-${day}`;
+        setDate(formattedDate);
+    };
+
+    useEffect(() => {
+        if (isActive && keyword && date) {
+            loadNews();
+        }
+    }, [isActive, keyword, date]);
+
+    const loadNews = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://newsapi.org/v2/everything?language=en&q=${keyword}&from=${date}&sortBy=publishedAt&apiKey=fbe7add389b5448ab567a25fe77713ec`
             );
+            setNews(data.articles.slice(0, 6));
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
-            // shorten snippet text and end with ...
-            snippetText = text_truncate(snippetText, 230, "...");
-            function text_truncate(str, length, ending) {
-              if (str.length > length) {
-                return str.substring(0, length - ending.length) + ending;
-              } else {
-                return str;
-              }
-            }
-
-            return (
-              <li key={i} className="singleNews">
-                <div className="articleImage">
-                  <a href={props.news[i].url} target="_blank">
-                    <img src={props.news[i].image.url} alt="news image" />
-                  </a>
+    return (
+        <>
+            <article
+                className="news"
+                style={{ display: page ? "none" : "flex" }}
+            >
+                <div className="box title">
+                    <h3>{city} News</h3>
                 </div>
-                <div className="articleSummary">
-                  <a href={props.news[i].url} target="_blank">
-                    <h5>{props.news[i].title}</h5>
-                  </a>
-                  <p>
-                    {publishedMonth} {publishedDate}, {publishedYear}
-                  </p>
-
-                  {/* <p>{snippetText}</p> */}
+                <div className="box newslist">
+                    <ul>
+                        {news?.map((article, i) => (
+                            <li key={i}>
+                                <NewsCard article={article} />
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-              </li>
-            );
-          })
-        : null}
-    </>
-  );
+            </article>
+        </>
+    );
 }
-
-export default NewsList;
