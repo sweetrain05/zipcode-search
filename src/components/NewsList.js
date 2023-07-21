@@ -34,11 +34,6 @@ export default function NewsList({ isActive, city, page }) {
 
     const loadNews = async () => {
         try {
-            // const { data } = await axios.get(
-            //     `https://newsapi.org/v2/everything?language=en&q=${keyword}&from=${date}&sortBy=publishedAt&apiKey=fbe7add389b5448ab567a25fe77713ec`
-            // );
-            // setNews(data.articles.slice(0, 6));
-
             const response = await axios.get(
                 `https://api.newscatcherapi.com/v2/search?lang=en&from=${date}&q=` +
                     encodeURIComponent(keyword),
