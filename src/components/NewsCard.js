@@ -22,7 +22,12 @@ export default function NewsCard({ article }) {
                                 : article?.title}
                         </h3>
                         <div className="articleInfo">
-                            <h4>{article?.source.name}</h4>
+                            <h4>
+                                {article?.source.name.length > 13
+                                    ? article?.source.name.substring(0, 13) +
+                                      "..."
+                                    : article?.source.name}
+                            </h4>
                             <h5>
                                 Published on{" "}
                                 {moment(article?.publishedAt).format(
