@@ -1,7 +1,7 @@
 
 <h2># zipcode-search</h2>
 
-<h4>🎁 https://sweetrain05.github.io/zipcode-search/</h4>
+<h4>🎁 https://zipcode-search-one.vercel.app</h4>
 
 <h4>Find your local weather🌞 and news📰 with one click!</h4>
 
