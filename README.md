@@ -1,7 +1,7 @@
 
 <h2># zipcode-search</h2>
 
-<h4>🎁 https://sweetrain05.github.io/zipcode-search/</h4>
+<h4>🎁 https://zipcode-search-one.vercel.app</h4>
 
 <h4>Find your local weather🌞 and news📰 with one click!</h4>
 
@@ -11,8 +11,11 @@
 
 <h4>🛠️ Tech used: React.js, public APIs (zipcode, weather, news)</h4>
 
-![image](https://user-images.githubusercontent.com/86023470/197096386-0df6c677-7a78-4601-9d64-369896d786cb.png)<br>
+![image](https://github.com/sweetrain05/zipcode-search/assets/86023470/b41b211c-3182-4672-a402-70d62d0cb0ac)
+<br>
 
-![image](https://user-images.githubusercontent.com/86023470/197096600-8e10d183-0551-4cb5-ac8c-e4f52d2e82f1.png)<br>
+![image](https://github.com/sweetrain05/zipcode-search/assets/86023470/cb9c3da1-c745-4365-b115-554d3353c5c3)
+<br>
 
-![image](https://user-images.githubusercontent.com/86023470/197096643-1076af2c-772c-4740-9796-bcaaed6a0fd8.png)<br>
+![image](https://github.com/sweetrain05/zipcode-search/assets/86023470/6faf4a0d-3ead-4680-af50-a8d01d3ac61d)
+<br>
