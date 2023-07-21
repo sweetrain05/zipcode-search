@@ -16,12 +16,6 @@ export default function NewsList({ isActive, city, page }) {
         }
     }, [isActive, city]);
 
-    // useEffect(() => {
-    //     if (isActive == true) {
-    //         //searchNews(city, state);
-    //     }
-    // }, [city]);
-
     const getDateFromWeekAgo = () => {
         const date = new Date();
         date.setDate(date.getDate() - 7);
@@ -40,10 +34,22 @@ export default function NewsList({ isActive, city, page }) {
 
     const loadNews = async () => {
         try {
-            const { data } = await axios.get(
-                `https://newsapi.org/v2/everything?language=en&q=${keyword}&from=${date}&sortBy=publishedAt&apiKey=fbe7add389b5448ab567a25fe77713ec`
+            // const { data } = await axios.get(
+            //     `https://newsapi.org/v2/everything?language=en&q=${keyword}&from=${date}&sortBy=publishedAt&apiKey=fbe7add389b5448ab567a25fe77713ec`
+            // );
+            // setNews(data.articles.slice(0, 6));
+
+            const response = await axios.get(
+                `https://api.newscatcherapi.com/v2/search?lang=en&from=${date}&q=` +
+                    encodeURIComponent(keyword),
+                {
+                    headers: {
+                        "x-api-key":
+                            "hv_SxwynSJGvIp1so6U5J35Qox2AmPWL2qNLMQugBEg",
+                    },
+                }
             );
-            setNews(data.articles.slice(0, 6));
+            setNews(response.data.articles.slice(0, 10));
         } catch (err) {
             console.log(err);
         }
@@ -60,9 +66,9 @@ export default function NewsList({ isActive, city, page }) {
                 </div>
                 <div className="box newslist">
                     <ul>
-                        {news?.map((article, i) => (
+                        {news?.map((n, i) => (
                             <li key={i}>
-                                <NewsCard article={article} />
+                                <NewsCard article={n} />
                             </li>
                         ))}
                     </ul>
