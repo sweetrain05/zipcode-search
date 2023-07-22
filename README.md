@@ -1,15 +1,16 @@
+☀️ Webpage URL : [Click here!](https://zipcode-search-one.vercel.app/)
 
-<h2># zipcode-search</h2>
+📒 **About this webpage :**
 
-<h4>🎁 https://zipcode-search-one.vercel.app</h4>
+Developed a single page application that enables users to search for local weather and related news articles by entering their zip code.
 
-<h4>Find your local weather🌞 and news📰 with one click!</h4>
+- Tech Stack : HTML, CSS, React JS, Restful API
+- Incorporated chaining HTTP requests to four different public APIs(Rapid APIs, Newscatcher), utilizing user-entered zip code to extract location details, which was chained to fetch real-time information on weather, time of the day, and local news.
 
-<h4>Just add your US zipcode🔢 and hit enter.</h4>
+🛠️ **Third Party Service & Libraries used :**
 
-<h4>Enjoy beautiful gradient background that changes color based on current time.</h4>
-
-<h4>🛠️ Tech used: React.js, public APIs (zipcode, weather, news)</h4>
+- **Restful APIs : ‘**RedLine Zipcode’, ‘Weather’, ‘World Time’ available at ****Rapid API([https://rapidapi.com/](https://rapidapi.com/redline/api/redline-zipcode/)), Newcatcher(https://newscatcherapi.com/)
+- **Others :** Axios, Moment, React Icons
 
 ![image](https://github.com/sweetrain05/zipcode-search/assets/86023470/b41b211c-3182-4672-a402-70d62d0cb0ac)
 <br>
