@@ -4,12 +4,12 @@
 
 Developed a single page application that enables users to search for local weather and related news articles by entering their zip code.
 
-- Tech Stack : HTML, CSS, React JS, Restful API
-- Incorporated chaining HTTP requests to four different public APIs(Rapid APIs, Newscatcher), utilizing user-entered zip code to extract location details, which was chained to fetch real-time information on weather, time of the day, and local news.
+- **Tech Stack** : HTML, CSS, React JS, Restful API
+- Incorporated <i>chaining HTTP requests</i> to four different public APIs(Rapid APIs, Newscatcher), utilizing user-entered zip code to extract location details, which was chained to fetch real-time information on weather, time of the day, and local news.
 
 🛠️ **Third Party Service & Libraries used :**
 
-- **Restful APIs : ‘**RedLine Zipcode’, ‘Weather’, ‘World Time’ available at ****Rapid API([https://rapidapi.com/](https://rapidapi.com/redline/api/redline-zipcode/)), Newcatcher(https://newscatcherapi.com/)
+- **Restful APIs :** ‘RedLine Zipcode’, ‘Weather’, ‘World Time’ available at ****Rapid API([https://rapidapi.com/](https://rapidapi.com/redline/api/redline-zipcode/)), Newcatcher(https://newscatcherapi.com/)
 - **Others :** Axios, Moment, React Icons
 
 ![image](https://github.com/sweetrain05/zipcode-search/assets/86023470/b41b211c-3182-4672-a402-70d62d0cb0ac)
