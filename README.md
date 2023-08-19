@@ -4,6 +4,12 @@
 
 Developed a single page application that enables users to search for local weather and related news articles by entering their zip code.
 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
 - **Tech Stack** : HTML, CSS, React JS, Restful API
 - Incorporated <i>chaining HTTP requests</i> to four different public APIs(Rapid APIs, Newscatcher), utilizing user-entered zip code to extract location details, which was chained to fetch real-time information on weather, time of the day, and local news.
 
