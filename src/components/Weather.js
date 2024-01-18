@@ -26,8 +26,10 @@ export default function Weather({ isActive, city, lng, lat, page }) {
     const [humidity, setHumidity] = useState("");
     const [clouds, setClouds] = useState("");
     const [precip, setPrecip] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     function getWeather(lng, lat) {
+        setIsLoading(true);
         const weather = {
             method: "GET",
             url: "https://weatherbit-v1-mashape.p.rapidapi.com/current",
@@ -55,7 +57,8 @@ export default function Weather({ isActive, city, lng, lat, page }) {
             })
             .catch(function (error) {
                 console.error(error);
-            });
+            })
+            .finally(setIsLoading(false));
     }
 
     // show weather icon based on weather code from API
@@ -148,43 +151,48 @@ export default function Weather({ isActive, city, lng, lat, page }) {
                 className="weather"
                 style={{ display: page ? "flex" : "none" }}
             >
-                <div className="box title">
-                    <h3>Today in {city}</h3>
-                </div>
-                <ul className="box tempIcon">
-                    <li>
-                        {temp}
-                        <span style={{ fontSize: "2rem" }}>°C</span>
-                    </li>
-                    <li>
-                        <div className="beat">{icon}</div>
-                    </li>
-                </ul>
+                {isLoading && <p className="paragraph">Loading...</p>}
+                {!isLoading && (
+                    <>
+                        <div className="box title">
+                            <h3>Today in {city}</h3>
+                        </div>
+                        <ul className="box tempIcon">
+                            <li>
+                                {temp}
+                                <span style={{ fontSize: "2rem" }}>°C</span>
+                            </li>
+                            <li>
+                                <div className="beat">{icon}</div>
+                            </li>
+                        </ul>
 
-                <div className="box extraInfo">
-                    <ul className="extraLeft">
-                        <li>
-                            Feels Like <p>{app_temp}°C</p>
-                        </li>
-                        <li>
-                            Wind Speed <p>{windSpeed}m/s</p>
-                        </li>
-                        <li>
-                            Humidity <p>{humidity}%</p>
-                        </li>
-                    </ul>
-                    <ul className="extraRight">
-                        <li>
-                            It's <p>{description}</p>
-                        </li>
-                        <li>
-                            Cloud Coverage <p>{clouds}%</p>
-                        </li>
-                        <li>
-                            Rain <p>{precip}mm/hr</p>
-                        </li>
-                    </ul>
-                </div>
+                        <div className="box extraInfo">
+                            <ul className="extraLeft">
+                                <li>
+                                    Feels Like <p>{app_temp}°C</p>
+                                </li>
+                                <li>
+                                    Wind Speed <p>{windSpeed}m/s</p>
+                                </li>
+                                <li>
+                                    Humidity <p>{humidity}%</p>
+                                </li>
+                            </ul>
+                            <ul className="extraRight">
+                                <li>
+                                    It's <p>{description}</p>
+                                </li>
+                                <li>
+                                    Cloud Coverage <p>{clouds}%</p>
+                                </li>
+                                <li>
+                                    Rain <p>{precip}mm/hr</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </>
+                )}
             </article>
         </>
     );

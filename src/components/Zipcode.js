@@ -1,7 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import { FiX } from "react-icons/fi";
 import NewsList from "./NewsList.js";
 import Weather from "./Weather.js";
@@ -104,7 +102,7 @@ function Zipcode() {
                     <input
                         type="text"
                         id="zipcode"
-                        placeholder="What is your zip code?"
+                        placeholder="Your zip code"
                         value={newZipcode}
                         onChange={(event) => {
                             event.preventDefault();

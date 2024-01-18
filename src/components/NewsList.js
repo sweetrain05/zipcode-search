@@ -8,6 +8,8 @@ export default function NewsList({ isActive, city, page }) {
     const [keyword, setKeyword] = useState(city);
     const [date, setDate] = useState("");
     const [news, setNews] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         if (isActive && city) {
@@ -33,20 +35,26 @@ export default function NewsList({ isActive, city, page }) {
     }, [isActive, keyword, date]);
 
     const loadNews = async () => {
+        setIsLoading(true);
         try {
             const response = await axios.get(
                 `https://api.newscatcherapi.com/v2/search?lang=en&from=${date}&q=` +
                     encodeURIComponent(keyword),
                 {
                     headers: {
-                        "x-api-key":
-                            "hv_SxwynSJGvIp1so6U5J35Qox2AmPWL2qNLMQugBEg",
+                        "x-api-key": process.env.REACT_APP_NEWS_API,
                     },
                 }
             );
-            setNews(response.data.articles.slice(0, 10));
+            if (response.status === "error") {
+                setErrorMessage(response.message);
+            } else {
+                setNews(response.data.articles.slice(0, 10));
+            }
         } catch (err) {
-            console.log(err);
+            setErrorMessage(err.response.data.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -60,12 +68,23 @@ export default function NewsList({ isActive, city, page }) {
                     <h3>{city} News</h3>
                 </div>
                 <div className="box newslist">
+                    {isLoading && <p className="paragraph">Loading...</p>}
+                    {errorMessage && (
+                        <p className="paragraph">
+                            Opps...
+                            <br />
+                            {errorMessage}
+                            <br />
+                            Please try again later.
+                        </p>
+                    )}
                     <ul>
-                        {news?.map((n, i) => (
-                            <li key={i}>
-                                <NewsCard article={n} />
-                            </li>
-                        ))}
+                        {news &&
+                            news.map((n, i) => (
+                                <li key={i}>
+                                    <NewsCard article={n} />
+                                </li>
+                            ))}
                     </ul>
                 </div>
             </article>

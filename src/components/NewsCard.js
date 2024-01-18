@@ -3,12 +3,12 @@ import noImageJPG from "../image/noImage.jpg";
 export default function NewsCard({ article }) {
     return (
         <>
-            <a href={article?.link} target="_blank">
+            <a href={article?.link} target="_blank" rel="noreferrer">
                 <div className="singleNews">
                     <div className="articleImage">
                         <img
                             src={article?.media ? article?.media : noImageJPG}
-                            alt="news image"
+                            alt="news"
                         />
                     </div>
                     <div className="articleSummary">
